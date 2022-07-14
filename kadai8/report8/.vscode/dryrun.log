@@ -1,0 +1,13 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/tomy/utokyo_syspro_baremetal_2022'
+make all -C bootloader
+make all -C kernel
+make all -C apps
+mkdir -p fs/EFI/BOOT
+cp bootloader/BOOTX64.EFI fs/EFI/BOOT/
+cp kernel/kernel ./fs/
+cp apps/app1 ./fs/
+cp apps/app2 ./fs/
+cp apps/app3 ./fs/
+make: Leaving directory '/home/tomy/utokyo_syspro_baremetal_2022'
+ 
