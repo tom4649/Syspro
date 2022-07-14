@@ -1,0 +1,42 @@
+課題bcdeレポート
+05221021　富張聡祥
+
+main.c内の主な関数、構造体について説明する。
+
+struct background_:
+バックグラウンドジョブを管理するための構造体。前と次の要素を指すポインタと、格納しているバックグラウンドジョブのグループid,ジョブ構造体をメンバに持つ。
+
+struct suspended_:
+SIGSTPによって中断されたプロセスを管理するための構造体。前と次の要素を指すポインタと、格納しているプロセスのプロセスid,ジョブ構造体をメンバに持つ。
+
+void dojob(job* curr_job):
+job構造体に格納されたjobを実行する関数。プロセスを配列に並べ、関数piperecによって実行する。
+
+void piperec(int i,process* processlist[],pid_t id):
+プロセスの配列の指定されたプロセスを実行する。再帰的に用いることで複数のパイプに対応可能。
+
+void sigaction_background(int signal,siginfo_t *info,void*ucontext):
+backgroundプロセスの終了をwaitするためのシグナルハンドラー関数。SIGCHLDが送られたときに実行され、終了してシグナルを送信したプロセスの情報を用いて
+終了したプロセスのプロセスグループidが管理しているバックグラウンドジョブのプロセスグループidと一致した場合にwaitを行う。
+
+void handler_suspended(int signal):
+SIGSTPを受け取ったときに呼ばれるシグナルハンドラー関数でSIGCONTが送られるのを待つ。
+
+void do_bgcmd(char* s):
+bgコマンドを実行する関数。引数がない場合には最初に中断されたプロセス、引数nがある場合にはn番目に中断したプロセスを実行。無効な引数の場合は無視する。
+バックグラウンドジョブに再開するプロセスを加え、kill関数を用いてプロセスにSIGCONTを送る。
+
+void do_fgcmd(char* s):
+fgコマンドを実行する関数。引数がない場合には最初に中断されたプロセス、引数nがある場合にはn番目に中断したプロセスを実行。無効な引数の場合は無視する。
+再開するプロセスをフォアグラウンドグラウンドプロセスに設定し、kill関数を用いてプロセスにSIGCONTを送る。
+
+void wait_background(pid_t pid,job* j):
+ジョブをバックグラウンドジョブに加え、そのjobの終了をwaitする準備をする関数
+
+void set_ish_signal():
+ishのsignal処理を設定する関数
+
+void set_foreground_signal(pid_t grp):
+フォアグラウンドジョブとそのシグナル処理を設定する関数
+
+以上の実装で全てのoptionalを含めた課題の要件を満たしたつもりである。
