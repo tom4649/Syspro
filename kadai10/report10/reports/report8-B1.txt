@@ -1,0 +1,9 @@
+レポート7-B1
+05221021 富張聡祥
+
+max=2^(32)(pm_timer_is_32が1のとき),2^(24)(pm_timer_is_32が0のとき),
+freq_hz=3579545[Hz](カウンタの周波数)とすると、タイマー一周で計測可能な計算時間は、
+max/freq_hz=1199.8(pm_timer_is_32が1のとき),4.6869(pm_timer_is_32が0のとき)[s]
+である。
+また関数init_acpi_pm_timerはPM_TIMERのレジスタのアドレスを見つけられたとき"pm_timer found",そうでないとき"pm_timer not found"と出力し、
+関数pm_timer_wait_millisecはタイマーの計測の開始時と終了時にそれぞれ"start","finished"と出力するようになっている。
