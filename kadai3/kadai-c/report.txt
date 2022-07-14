@@ -1,0 +1,7 @@
+課題C
+理学部情報科学科　05221021　富張聡祥
+
+bounded_bufferを構造体として定義し、メンバにバッファに挿入されている要素の数を表すint numを加えることで実装した。
+Condition Variableを用いてbb_put,bb_getともにバッファの要素数が一杯または0のときには要素数が変化することを待ち続けるように実装した。
+そしてbb_put,bb_getによってバッファの要素数が変化したときにはpthread_cond_signalを用いてCondition_Variableを待っているスレッドを一つ再開させるようにした。
+なお、Condition Variableを待つ際にsched_yieldを実行するようにすることで、bb_put,bb_getが正しい順番で行われるようにした。
