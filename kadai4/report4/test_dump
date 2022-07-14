@@ -1,0 +1,11 @@
+#############################################
+kadai04: info: Running tests. (v0.0.5)
+kadai-a: info: report file not found. (but not required)
+kadai-b: info: report file not found. (but not required)
+kadai-c: info: Found 'report.txt'.
+kadai-c: info: iprefc result: 10000000000 13.879732 5763.800063
+kadai-d: info: Found 'report.txt'.
+kadai04: info: All tests finished!
+kadai04: note: This scripts dump the result into /home/tomy/sys_jikken/kadai4/report4/test_dump
+kadai04: note: Please don't remove and include this file in submission
+#############################################

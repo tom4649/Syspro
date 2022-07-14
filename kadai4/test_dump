@@ -1,0 +1,10 @@
+#############################################
+kadai04: info: Running tests. (v0.0.5)
+kadai-a: error: No 'kadai-a' directory!
+kadai-b: error: No 'kadai-b' directory!
+kadai-c: error: No 'kadai-c' directory!
+kadai-d: info: No 'kadai-d' directory!
+kadai04: info: All tests finished!
+kadai04: note: This scripts dump the result into /home/tomy/sys_jikken/kadai4/test_dump
+kadai04: note: Please don't remove and include this file in submission
+#############################################
